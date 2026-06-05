@@ -1,18 +1,8 @@
-<h1>
-    Bem vindo
-</h1>
-<p>
-    Olá {{$name}}
-</p>
-<p>
-    Seus habitos são
-</p>
-<ul>
-    @foreach($habits as $item)
-        <li>
-            {{$item}}
-        </li>
-    @endforeach
-</ul>
-
+<x-layout>
+    <main class="py-10">
+        <h1>
+            Veja seus hábitos ganharem vida
+        </h1>
+    </main>
+</x-layout>
 
