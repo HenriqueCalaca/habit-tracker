@@ -34,9 +34,9 @@ class HabitController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Habit $habit)
+    public function edit(HabitRequest $habit)
     {
-        //
+        return view('habits.edit', compact('habit'));
     }
 
     /**
@@ -44,7 +44,15 @@ class HabitController extends Controller
      */
     public function update(Request $request, Habit $habit)
     {
-        //
+        if($habit->user_id != auth()->user()->id){
+            abort(403, 'Error');
+        }
+
+        $habit->update($request->all());
+
+        return redirect()
+            ->route('site.dashboard')
+            ->with('success', 'Habito editado com sucesso!');
     }
 
     /**
@@ -62,4 +70,5 @@ class HabitController extends Controller
             ->route('site.dashboard')
             ->with('success', 'Habito deletado com sucesso!');
     }
+
 }
