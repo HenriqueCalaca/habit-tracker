@@ -33,7 +33,7 @@
 
                 <button
                     type="submit"
-                    class="bg-white p-2 border-2"
+                    class="p-2 border-2 bg-habit-orange"
                 >
                     Editar Hábito
                 </button>

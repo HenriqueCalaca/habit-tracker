@@ -9,7 +9,10 @@
                 Insira seus dados para acessar
             </p>
 
-            <form action="{{ route('auth.login') }}" method="POST" class="flex flex-col">
+            <form
+                action="{{ route('auth.login') }}"
+                method="POST"
+                class="flex flex-col">
                 @csrf
 
                 <div class="flex flex-col gap-2 mb-4">
@@ -20,7 +23,7 @@
                         type="email"
                         name="email"
                         placeholder="Email"
-                        class="bg-white p-2 border-2 @error('email') border-red-500 @enderror"
+                        class="bg-white p-2 habit-shadow @error('email') border-red-500 @enderror"
                     >
 
                     @error('email')
@@ -40,7 +43,7 @@
                         type="password"
                         name="password"
                         placeholder="*********"
-                        class="bg-white p-2 border-2 @error('password') border-red-500 @enderror"
+                        class="bg-white p-2 habit-shadow @error('password') border-red-500 @enderror"
                     >
 
                     @error('password')
@@ -54,7 +57,7 @@
 
                 <button
                     type="submit"
-                    class="bg-white p-2 border-2"
+                    class="p-2 border-2 bg-habit-orange habit-shadow-lg habit-btn"
                 >
                     Entrar
                 </button>
