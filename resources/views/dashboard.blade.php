@@ -1,12 +1,7 @@
 <x-layout>
-    <main class="py-10 min-h-[calc(100vh-160px)]">
-        <h1 class="font-bold text-4xl text-center">
-            Dashboard
-        </h1>
+    <main class="py-10 min-h-[calc(100vh-160px)] px-4" >
 
-        <a href="{{ route('habits.create') }}" class="bg-white p-2 border-2 font-bold block">
-            Cadastrar Hábito
-        </a>
+        <x-navbar/>
 
         @session('success')
         <div class="flex">
@@ -17,32 +12,18 @@
         @endsession
 
         <div>
-            <h2 class="text-xl mt-4">
-                Listagem dos Hábitos
+            <h2 class="text-lg mt-8 mb-2">
+                {{ date('d/m/Y') }}
             </h2>
 
             <ul class="flex flex-col gap-2">
                 @forelse($habits as $item)
-                <li>
+                <li class="habit-shadow-lg p-2 bg-[#FFDAAC]">
                     <div class="flex gap-2 items-center">
-                        <p class="font-bold text-xl">
-                           - {{ $item->name }}
+                        <input type="checkbox" class="w-5 h-5 {{ $item->is_completed ? 'checked' : '' }}">
+                        <p class="font-bold text-lg">
+                           {{ $item->name }}
                         </p>
-                        <p>
-                            [{{ $item->habitLogs->count() }}]
-                        </p>
-                        <a href="{{ route('habits.edit', $item->id) }}" class="bg-white text-white p-1 hover:opacity-50">
-                           <x-icons.edit/>
-                        </a>
-                        <form action="{{ route('habits.destroy', $item) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-
-                            @csrf
-                            <button type="submit" class="bg-red-500 text-white p-1 hover:opacity-50 cursor-pointer">
-                                <x-icons.trash/>
-                            </button>
-                        </form>
                     </div>
                 </li>
                 @empty
