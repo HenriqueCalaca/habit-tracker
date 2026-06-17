@@ -11,6 +11,7 @@ class Habit extends Model
 {
     use HasFactory;
 
+    // public mixed $user_id;
     protected $fillable = [
         'user_id',
         'name',
